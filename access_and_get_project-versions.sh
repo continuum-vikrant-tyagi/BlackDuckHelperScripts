@@ -2,6 +2,7 @@
 
 access_token=<api access token>
 web_url=<blackduck url>
+projectId=<project id>
 
 
 function authenticate()
@@ -10,13 +11,13 @@ function authenticate()
         bearer_token=$(echo "${response}" | jq --raw-output '.bearerToken')
 }
 
-function getProjects()
+function getProjectVersions()
 {
-        projects=$(curl --insecure -X GET --header "Content-Type:application/json" --header "Authorization: bearer $bearer_token" "$web_url/api/projects")
+        projects=$(curl --insecure -X GET --header "Content-Type:application/json" --header "Authorization: bearer $bearer_token" "$web_url/api/projects/$projectId/versions")
         echo $projects
 }
 
 authenticate
-echo "============================Projects==========================="
-getProjects
+echo "======================Project Versions========================="
+getProjectVersions
 echo "==============================================================="
