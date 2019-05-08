@@ -1,7 +1,7 @@
 #!/bin/bash
 
-access_token=ZTAwZDM1MTktMjM2Mi00NTI0LWIzZTgtNTc4NDhlOWQxYmI5OjYzYjU4NzEyLWVmNTMtNDRkOS1hZmIzLWU5OTI5MzEzOWU2ZA==
-web_url=https://imp-docker03.dc1.lan
+access_token=<Api token>
+web_url=<hub url>
 
 
 function authenticate()
@@ -12,13 +12,11 @@ function authenticate()
 
 function getLicenseTerms()
 {
-        projects=$(curl --insecure -X GET --header "Content-Type:application/json" --header "Authorization: bearer $bearer_token" "$web_url/api/license-terms?limit=100")
-        echo $projects
+        terms=$(curl --insecure -X GET --header "Content-Type:application/json" --header "Authorization: bearer $bearer_token" "$web_url/api/license-terms?limit=100")
+        echo $terms
 }
 
 authenticate
-echo "============================Projects==========================="
+echo "============================License============================"
 getLicenseTerms
 echo "==============================================================="
-
-pause
