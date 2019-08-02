@@ -38,7 +38,7 @@ while [[ $# -gt 0 ]]; do
         project_id="$1"
         ;;
         # component name to ignore arg passed as space
-        -p|--project-version-id)
+        -pv|--project-version-id)
         shift
         project_version_id="$1"
         ;;
