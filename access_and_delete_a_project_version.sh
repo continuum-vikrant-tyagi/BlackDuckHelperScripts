@@ -12,7 +12,7 @@ function authenticate()
         bearer_token=$(echo "${response}" | jq --raw-output '.bearerToken')
 }
 
-function deleteProject()
+function deleteProjectVersion()
 {
         result=$(curl --insecure -X DELETE --header "Content-Type:application/json" --header "Authorization: bearer $bearer_token" "$web_url/api/projects/$project_id/versions/$project_version_id")
         if [ "$result" -eq "204" ]
@@ -63,6 +63,6 @@ done
 
 # Start
 authenticate
-deleteProject
+deleteProjectVersion
 
 ##############################################
